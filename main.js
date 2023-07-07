@@ -52,17 +52,17 @@ let list = [ "apples", "bananas", "carrots", "dragon fruit", "eggplant", "fish",
 
 
 // TODO: Create an unordered list element
-let newOl = document.createElement("ol");
+let newUl = document.createElement("ul");
 // TODO: Iterate over the array values, and create a list item element for each
 // TODO: Append the new list items to the unordered list element
 for (let i = 0; i < list.length; i++){
     let newLi = document.createElement("li");
     newLi.textContent = list[i];
-    newOl.append(newLi);
+    newUl.append(newLi);
 }
 // TODO: Append the unordered list to the `div#container` under exercise 4 
 let container = document.getElementById("container");
-container.append(newOl);
+container.append(newUl);
 
 /*----------- Exercise #5: DOM EVENTS --------------*/
 
@@ -91,3 +91,4 @@ button.onclick = show;
 // -> "Clicking the button triggers the onclick event, which calls the JS function show()... which alerts the user"
 // This div should be a 'modal' that covers the main content on the screen
 // BONUS: The modal popup should be able to be closed. Refactor for this functionality
+
