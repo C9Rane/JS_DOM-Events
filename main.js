@@ -21,42 +21,73 @@ for (let i = 0; i < h3.length; i++){
 let p = document.createElement("p");
 p.textContent = "This node was created using the createElement() method";
 // TODO: Append the created node to the parent node using the element.appendChild() method
-const parent = document.getElementById('parent');
+let parent = document.getElementById('parent');
 parent.appendChild(p);
 // TODO: Create a <a> element using this document.createElement() and put this text inside "I am a <a> tag"
-const link = document.createElement("a");
+let link = document.createElement("a");
 link.textContent = "I am a <a> tag";
 // BONUS: Add a link href to the <a>
 link.href = "https://truecoders.io";
 // TODO: Insert the created <a> in the parent but before the <p> you just created using the element.insertBefore() method
 parent.insertBefore(link, p);
+
 /*----------- Exercise #3: REMOVING/REPLACING ELEMENTS/OBJECTS -----------*/
 
 // TODO: Replace the "Child Node" with a new <p> element that reads "New Child Node"
-const newParent = document.getElementById("parent");
-const newParagraph = document.createElement("p");
+let newParent = document.getElementById("exercise-container3");
+let newParagraph = document.createElement("p");
 newParagraph.textContent = "New Child Node";
-const existingChild = newParent.firstChild;
+let existingChild = document.getElementById("N1");
 newParent.replaceChild(newParagraph, existingChild);
 // TODO: Remove the "New Child Node"
-newParagraph.remove();
+newParent.removeChild(newParagraph);
+
 /*----------- Exercise #4: LIST ITEMS ----------- */
 // Use the following array of values to generate a list on the DOM
 
 let list = [ "apples", "bananas", "carrots", "dragon fruit", "eggplant", "fish", "grapes", "honey", "ice bag", "juice (any kind)" ];
 
 
+
+
+
 // TODO: Create an unordered list element
-
+let newOl = document.createElement("ol");
 // TODO: Iterate over the array values, and create a list item element for each
-
 // TODO: Append the new list items to the unordered list element
-
+for (let i = 0; i < list.length; i++){
+    let newLi = document.createElement("li");
+    newLi.textContent = list[i];
+    newOl.append(newLi);
+}
 // TODO: Append the unordered list to the `div#container` under exercise 4 
+let container = document.getElementById("container");
+container.append(newOl);
 
 /*----------- Exercise #5: DOM EVENTS --------------*/
 
 // TODO: write a function called "show" which creates a new div with an alerting message to the user with this message
+function show(){
+    let alert = document.createElement("div");
+    alert.setAttribute("id", "modal");
+    let modalBox = document.createElement("div");
+    modalBox.setAttribute("class", "modal-card");
+    let modalMsg = document.createElement("h2");
+    modalMsg.textContent = "Alert, Alert, Alert";
+    let closeBtn = document.createElement("button");
+    closeBtn.textContent = "Carry On";
+    closeBtn.onclick = function(){
+        alert.style.visibility = "hidden"
+    }
+    modalBox.append(modalMsg, closeBtn);
+    alert.append(modalBox);
+    let ex5 = document.getElementsByClassName("exercise-container exercise5");
+    console.log(ex5[0]);
+    ex5[0].append(alert);
+}
+
+let button = document.getElementById("btn");
+button.onclick = show;
 // -> "Clicking the button triggers the onclick event, which calls the JS function show()... which alerts the user"
 // This div should be a 'modal' that covers the main content on the screen
 // BONUS: The modal popup should be able to be closed. Refactor for this functionality
